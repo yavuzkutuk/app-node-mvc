@@ -1,0 +1,30 @@
+const mysql = require('mysql');
+
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "user",
+    password: "password",
+    database: "database"
+});
+
+db.connect((err) => {
+    if(err) throw err;
+    console.log("Connecté");
+    let sql = "DROP TABLE home";
+    db.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("Table supprimé");
+      });
+    sql = "CREATE TABLE IF NOT EXISTS home (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255))";
+    db.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("Table crée");
+    });
+    sql = "INSERT INTO home VALUES (null, 'Carte'), (null, 'Théo'), (null, 'Hurkan')";
+    db.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log("Insertion effectué");
+    });
+});
+
+module.exports = { db };

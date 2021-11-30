@@ -20,7 +20,7 @@ db.connect((err) => {
       if (err) throw err;
       console.log("Table crée");
     });
-    sql = "INSERT INTO home VALUES (null, 'Carte'), (null, 'Théo'), (null, 'Hurkan')";
+    sql = "INSERT INTO home VALUES (null, 'Carter'), (null, 'Théo'), (null, 'Hurkan')";
     db.query(sql, function (err, result) {
       if (err) throw err;
       console.log("Insertion effectué");
